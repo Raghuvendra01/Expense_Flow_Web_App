@@ -1,0 +1,1079 @@
+{%load static %}
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#191c1d",
+              primary: "#3525cd",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#e7e8e9",
+              background: "#f8f9fa",
+              "on-secondary-fixed": "#002113",
+              "surface-bright": "#f8f9fa",
+              "inverse-surface": "#2e3132",
+              "inverse-primary": "#c3c0ff",
+              error: "#ba1a1a",
+              "secondary-fixed-dim": "#4edea3",
+              "on-tertiary-fixed-variant": "#92002a",
+              "surface-variant": "#e1e3e4",
+              "primary-fixed-dim": "#c3c0ff",
+              "on-error": "#ffffff",
+              "on-primary-container": "#dad7ff",
+              "surface-container": "#edeeef",
+              tertiary: "#95002b",
+              surface: "#f8f9fa",
+              "outline-variant": "#c7c4d8",
+              "error-container": "#ffdad6",
+              "surface-tint": "#4d44e3",
+              "on-secondary": "#ffffff",
+              secondary: "#006c49",
+              "surface-container-lowest": "#ffffff",
+              "on-surface-variant": "#464555",
+              "tertiary-container": "#bf0f3c",
+              outline: "#777587",
+              "on-secondary-fixed-variant": "#005236",
+              "inverse-on-surface": "#f0f1f2",
+              "on-primary-fixed": "#0f0069",
+              "secondary-fixed": "#6ffbbe",
+              "on-tertiary": "#ffffff",
+              "on-background": "#191c1d",
+              "tertiary-fixed-dim": "#ffb2b7",
+              "on-tertiary-fixed": "#40000d",
+              "surface-dim": "#d9dadb",
+              "tertiary-fixed": "#ffdadb",
+              "secondary-container": "#6cf8bb",
+              "on-tertiary-container": "#ffd0d2",
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#e1e3e4",
+              "on-secondary-container": "#00714d",
+              "primary-container": "#4f46e5",
+              "on-primary-fixed-variant": "#3323cc",
+              "primary-fixed": "#e2dfff",
+              "surface-container-low": "#f3f4f5",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-mobile": "16px",
+              xl: "32px",
+              lg: "24px",
+              xs: "4px",
+              "margin-desktop": "40px",
+              md: "16px",
+              sm: "8px",
+              base: "4px",
+              gutter: "20px",
+            },
+            fontFamily: {
+              "body-md": ["Inter"],
+              "numeric-display": ["Inter"],
+              "label-md": ["Inter"],
+              "headline-sm": ["Inter"],
+              "body-lg": ["Inter"],
+              "headline-lg": ["Inter"],
+              "headline-md": ["Inter"],
+              "headline-lg-mobile": ["Inter"],
+            },
+            fontSize: {
+              "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              "numeric-display": [
+                "28px",
+                {
+                  lineHeight: "32px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "label-md": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-sm": [
+                "18px",
+                { lineHeight: "28px", fontWeight: "600" },
+              ],
+              "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-md": [
+                "24px",
+                {
+                  lineHeight: "32px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-lg-mobile": [
+                "24px",
+                {
+                  lineHeight: "32px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #e5e7eb;
+        border-radius: 10px;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+    <!-- SideNavBar -->
+    <aside
+      class="h-screen w-64 hidden md:flex flex-col fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant z-50"
+    >
+      <div class="flex flex-col h-full p-lg">
+        <div class="mb-xl px-4">
+          <h1
+            class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim"
+          >
+            ExpenseFlow
+          </h1>
+          <p class="text-on-surface-variant text-label-md font-label-md">
+            Personal Finance
+          </p>
+        </div>
+        <nav class="flex-grow space-y-sm">
+          <a
+            class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg active:scale-[0.98] transition-transform duration-150"
+            href="#"
+          >
+            <span class="material-symbols-outlined" data-icon="dashboard"
+              >dashboard</span
+            >
+            <span class="font-body-md text-body-md">Dashboard</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-[0.98] transition-transform duration-150"
+            href="/allExpense/"
+          >
+            <span class="material-symbols-outlined" data-icon="payments"
+              >payments</span
+            >
+            <span class="font-body-md text-body-md">Expenses</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-[0.98] transition-transform duration-150"
+            href="{% url 'logout' %}"
+          >
+            <span class="material-symbols-outlined" data-icon="analytics"
+              >analytics</span
+            >
+            <span class="font-body-md text-body-md">Logout</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-[0.98] transition-transform duration-150"
+            href="#"
+          >
+            <span class="material-symbols-outlined" data-icon="settings"
+              >settings</span
+            >
+            <span class="font-body-md text-body-md">Settings</span>
+          </a>
+        </nav>
+        <div
+          class="mt-auto flex items-center gap-3 px-4 py-4 border-t border-outline-variant"
+        >
+          {% if profile and profile.image %}
+          <img
+            src="{{ profile.image.url }}"
+            alt="Profile"
+            class="w-10 h-10 rounded-full object-cover"
+          />
+          {% else %}
+          <img
+            src="{% static 'images/default-profile.png' %}"
+            alt="Default Profile"
+            class="w-10 h-10 rounded-full"
+          />
+          {% endif %}
+          <div>
+            <p class="font-label-md text-on-surface font-bold">
+              {{ full_name }}
+            </p>
+            <p class="text-xs text-on-surface-variant">Account</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 right-0 left-0 md:left-64 h-16 bg-surface dark:bg-surface-dim border-b border-outline-variant shadow-sm z-40 flex justify-between items-center px-margin-mobile md:px-margin-desktop"
+    >
+      <div class="flex items-center gap-4">
+        <h1
+          class="font-headline-sm text-headline-sm font-bold text-primary md:hidden"
+        >
+          ExpenseFlow
+        </h1>
+        <div
+          class="hidden md:flex items-center bg-surface-container px-4 py-2 rounded-full border border-outline-variant"
+        >
+          <span
+            class="material-symbols-outlined text-on-surface-variant text-sm"
+            data-icon="search"
+            >search</span
+          >
+          <input
+            class="bg-transparent border-none focus:ring-0 text-body-md placeholder:text-on-surface-variant w-64"
+            placeholder="Search transactions..."
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <button
+          class="p-2 text-on-surface-variant hover:text-primary transition-colors active:opacity-80"
+        >
+          <span class="material-symbols-outlined" data-icon="notifications"
+            >notifications</span
+          >
+        </button>
+
+        <form method="POST" enctype="multipart/form-data" id="profile-form">
+          {% csrf_token %}
+
+          <input
+            type="file"
+            name="image"
+            id="image-input"
+            class="hidden"
+            accept="image/*"
+          />
+
+          <button
+            type="button"
+            onclick="document.getElementById('image-input').click()"
+            class="p-2 text-on-surface-variant hover:text-primary transition-colors active:opacity-80"
+          >
+            {% if profile and profile.image %}
+            <img
+              src="{{ profile.image.url }}"
+              alt="Profile"
+              class="w-10 h-10 rounded-full object-cover"
+            />
+            {% else %}
+            <img
+              src="{% static 'images/default-profile.png' %}"
+              alt="Default Profile"
+              class="w-10 h-10 rounded-full"
+            />
+            {% endif %}
+          </button>
+        </form>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main
+      class="pt-20 pb-20 md:pb-8 md:ml-64 px-margin-mobile md:px-margin-desktop min-h-screen"
+    >
+      <!-- Welcome Section -->
+      <div
+        class="flex flex-col md:flex-row md:items-end justify-between mb-lg gap-3 md:gap-4"
+      >
+        <div>
+          <h2 class="font-headline-lg text-headline-lg text-on-surface">
+            Financial Overview
+          </h2>
+          <p class="text-on-surface-variant font-body-lg text-sm md:text-base">
+            Welcome back, here's what's happening with your money.
+          </p>
+        </div>
+        <div class="w-full md:w-auto flex flex-col md:flex-row gap-2 md:gap-3">
+          <button
+            id="setBudgetBtn"
+            onclick="openBudgetModal()"
+            class="w-full md:w-auto flex items-center justify-center gap-2 bg-surface-container-high text-on-surface border border-outline-variant px-6 py-3 rounded-lg font-label-md shadow-sm hover:bg-outline-variant/30 active:scale-95 transition-all"
+          >
+            <span class="material-symbols-outlined"
+              >account_balance_wallet</span
+            >
+            <span>Set Budget</span>
+          </button>
+          <a
+            href="{% url 'addExpense' %}"
+            class="w-full md:w-auto flex items-center justify-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md shadow-md hover:bg-opacity-90 active:scale-95 transition-all"
+          >
+            <span class="material-symbols-outlined">add_circle</span>
+            <span>Add New Expense</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Summary Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-lg">
+        <div
+          class="bg-surface-container-lowest p-lg rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] border border-outline-variant"
+        >
+          <div class="flex items-center justify-between mb-sm">
+            <span class="text-on-surface-variant font-label-md"
+              >Total Balance To Spend</span
+            >
+            <span
+              class="material-symbols-outlined text-primary"
+              data-icon="account_balance_wallet"
+              >account_balance_wallet</span
+            >
+          </div>
+          <div
+            class="font-numeric-display text-numeric-display text-on-surface"
+          >
+            ₹{{ budget.total_balance_to_spend}}
+          </div>
+          <div
+            class="mt-2 flex items-center text-secondary text-xs font-label-md"
+          ></div>
+        </div>
+
+        <div
+          class="bg-surface-container-lowest p-lg rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] border border-outline-variant"
+        >
+          <div class="flex items-center justify-between mb-sm">
+            <span class="text-on-surface-variant font-label-md"
+              >Monthly Income</span
+            >
+            <span
+              class="material-symbols-outlined text-secondary"
+              data-icon="arrow_downward"
+              >arrow_upward</span
+            >
+          </div>
+
+          <div
+            class="font-numeric-display text-numeric-display text-on-surface"
+          >
+            ₹{{budget.monthly_income}}
+          </div>
+
+          <div
+            class="mt-2 flex items-center text-secondary text-xs font-label-md"
+          ></div>
+        </div>
+
+        <div
+          class="bg-surface-container-lowest p-lg rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] border border-outline-variant"
+        >
+          <div class="flex items-center justify-between mb-sm">
+            <span class="text-on-surface-variant font-label-md"
+              >Max Expense on Category:</span
+            >
+            <span
+              class="material-symbols-outlined text-error"
+              data-icon="arrow_upward"
+              >arrow_upward</span
+            >
+          </div>
+          <div
+            class="font-numeric-display text-numeric-display text-on-surface"
+          >
+            {% if max_expense %}
+             ₹{{ max_expense.total_expense }} 
+             {% else %} 
+             ₹ 0.0
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento Grid Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter">
+        <!-- Chart Section -->
+        <div
+          class="md:col-span-2 lg:col-span-8 bg-surface-container-lowest p-lg rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] border border-outline-variant h-full"
+        >
+          <div class="flex items-center justify-between mb-xl">
+            <div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface">
+                Spending Overview
+              </h3>
+              <p class="text-on-surface-variant text-label-md">
+                Last 6 months activity
+              </p>
+            </div>
+            <select
+              class="bg-surface-container-low border-outline-variant rounded-lg text-label-md py-1 px-3 focus:ring-primary"
+            >
+              <option>Current Year</option>
+              <option>Last Year</option>
+            </select>
+          </div>
+          <!-- Mock Chart Visualization -->
+          <div
+            class="h-48 md:h-64 flex items-end justify-between gap-1 md:gap-2 px-2 relative"
+          >
+            <!-- Grid Lines -->
+            <div
+              class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20 py-4"
+            >
+              <div class="border-t border-outline"></div>
+              <div class="border-t border-outline"></div>
+              <div class="border-t border-outline"></div>
+              <div class="border-t border-outline"></div>
+            </div>
+            <div class="flex-1 group flex flex-col items-center">
+              <div
+                class="w-full bg-primary-container rounded-t-lg transition-all group-hover:bg-primary"
+                style="height: 40%"
+              ></div>
+              <span class="mt-4 text-xs font-label-md text-on-surface-variant"
+                >Jan</span
+              >
+            </div>
+            <div class="flex-1 group flex flex-col items-center">
+              <div
+                class="w-full bg-primary-container rounded-t-lg transition-all group-hover:bg-primary"
+                style="height: 60%"
+              ></div>
+              <span class="mt-4 text-xs font-label-md text-on-surface-variant"
+                >Feb</span
+              >
+            </div>
+            <div class="flex-1 group flex flex-col items-center">
+              <div
+                class="w-full bg-primary-container rounded-t-lg transition-all group-hover:bg-primary"
+                style="height: 45%"
+              ></div>
+              <span class="mt-4 text-xs font-label-md text-on-surface-variant"
+                >Mar</span
+              >
+            </div>
+            <div class="flex-1 group flex flex-col items-center">
+              <div
+                class="w-full bg-primary-container rounded-t-lg transition-all group-hover:bg-primary"
+                style="height: 85%"
+              ></div>
+              <span class="mt-4 text-xs font-label-md text-on-surface-variant"
+                >Apr</span
+              >
+            </div>
+            <div class="flex-1 group flex flex-col items-center">
+              <div
+                class="w-full bg-primary-container rounded-t-lg transition-all group-hover:bg-primary"
+                style="height: 55%"
+              ></div>
+              <span class="mt-4 text-xs font-label-md text-on-surface-variant"
+                >May</span
+              >
+            </div>
+            <div class="flex-1 group flex flex-col items-center">
+              <div
+                class="w-full bg-primary-container rounded-t-lg transition-all group-hover:bg-primary"
+                style="height: 70%"
+              ></div>
+              <span class="mt-4 text-xs font-label-md text-on-surface-variant"
+                >Jun</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Side Card: Category Breakdown -->
+        <div
+          class="md:col-span-2 lg:col-span-4 bg-primary text-on-primary p-lg rounded-xl shadow-lg flex flex-col justify-between overflow-hidden relative"
+        >
+          <div class="relative z-10">
+            <h3 class="font-headline-sm text-headline-sm mb-base">
+              Top Category
+            </h3>
+            <p class="opacity-80 text-label-md mb-lg">
+              You spent most on Housing this month.
+            </p>
+            <div class="space-y-md">
+              <div>
+                <div class="flex justify-between text-xs font-label-md mb-1">
+                  <span>Housing &amp; Rent</span>
+                  <span>$1,800.00</span>
+                </div>
+                <div
+                  class="w-full bg-white bg-opacity-20 h-2 rounded-full overflow-hidden"
+                >
+                  <div class="bg-white h-full w-[58%] rounded-full"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-label-md mb-1">
+                  <span>Dining &amp; Food</span>
+                  <span>$640.00</span>
+                </div>
+                <div
+                  class="w-full bg-white bg-opacity-20 h-2 rounded-full overflow-hidden"
+                >
+                  <div class="bg-white h-full w-[20%] rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Decorative Graphic -->
+          <div class="absolute -bottom-10 -right-10 opacity-10">
+            <span
+              class="material-symbols-outlined text-[120px]"
+              data-icon="pie_chart"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >pie_chart</span
+            >
+          </div>
+          <button
+            class="relative z-10 mt-lg w-full py-2 bg-white text-primary rounded-lg font-label-md hover:bg-opacity-90 transition-all"
+          >
+            View Full Analysis
+          </button>
+        </div>
+        <!-- Recent Transactions Table -->
+        <div
+          class="md:col-span-2 lg:col-span-12 bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] border border-outline-variant overflow-hidden"
+        >
+          <div
+            class="p-lg flex items-center justify-between border-b border-outline-variant"
+          >
+            <h3 class="font-headline-sm text-headline-sm text-on-surface">
+              Recent Transactions
+            </h3>
+            <button class="text-primary font-label-md hover:underline text-sm">
+              View All
+            </button>
+          </div>
+          <!-- Desktop Table View -->
+          <div class="hidden md:block overflow-x-auto">
+            <table class="w-full text-left">
+              <thead
+                class="bg-surface-container-low text-on-surface-variant font-label-md"
+              >
+                <tr>
+                  <th class="px-lg py-4">Transaction</th>
+                  <th class="px-lg py-4">Category</th>
+                  <th class="px-lg py-4">Date</th>
+                  <th class="px-lg py-4">Amount</th>
+                  <th class="px-lg py-4 text-right">Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-outline-variant">
+                <tr class="hover:bg-surface-container transition-colors group">
+                  <td class="px-lg py-4">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center"
+                      >
+                        <span
+                          class="material-symbols-outlined"
+                          data-icon="restaurant"
+                          >restaurant</span
+                        >
+                      </div>
+                      <div>
+                        <p class="font-bold text-on-surface">
+                          Joe's Italian Bistro
+                        </p>
+                        <p class="text-xs text-on-surface-variant">
+                          Card Payment • 4567
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-lg py-4">
+                    <span
+                      class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface text-xs font-label-md"
+                      >Food</span
+                    >
+                  </td>
+                  <td class="px-lg py-4 text-on-surface-variant text-sm">
+                    Oct 24, 2023
+                  </td>
+                  <td class="px-lg py-4 font-bold text-on-surface">-$124.50</td>
+                  <td class="px-lg py-4 text-right">
+                    <span
+                      class="text-secondary flex items-center justify-end gap-1 text-xs font-bold"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[14px]"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >check_circle</span
+                      >
+                      Completed
+                    </span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-surface-container transition-colors group">
+                  <td class="px-lg py-4">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center"
+                      >
+                        <span
+                          class="material-symbols-outlined"
+                          data-icon="commute"
+                          >commute</span
+                        >
+                      </div>
+                      <div>
+                        <p class="font-bold text-on-surface">Uber Trip</p>
+                        <p class="text-xs text-on-surface-variant">
+                          Mobile Wallet
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-lg py-4">
+                    <span
+                      class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface text-xs font-label-md"
+                      >Transport</span
+                    >
+                  </td>
+                  <td class="px-lg py-4 text-on-surface-variant text-sm">
+                    Oct 23, 2023
+                  </td>
+                  <td class="px-lg py-4 font-bold text-on-surface">-$32.00</td>
+                  <td class="px-lg py-4 text-right">
+                    <span
+                      class="text-secondary flex items-center justify-end gap-1 text-xs font-bold"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[14px]"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >check_circle</span
+                      >
+                      Completed
+                    </span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-surface-container transition-colors group">
+                  <td class="px-lg py-4">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center"
+                      >
+                        <span
+                          class="material-symbols-outlined"
+                          data-icon="house"
+                          >house</span
+                        >
+                      </div>
+                      <div>
+                        <p class="font-bold text-on-surface">
+                          Skyline Properties
+                        </p>
+                        <p class="text-xs text-on-surface-variant">
+                          Bank Transfer
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-lg py-4">
+                    <span
+                      class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface text-xs font-label-md"
+                      >Rent</span
+                    >
+                  </td>
+                  <td class="px-lg py-4 text-on-surface-variant text-sm">
+                    Oct 20, 2023
+                  </td>
+                  <td class="px-lg py-4 font-bold text-on-surface">
+                    -$1,800.00
+                  </td>
+                  <td class="px-lg py-4 text-right">
+                    <span
+                      class="text-on-surface-variant flex items-center justify-end gap-1 text-xs font-bold"
+                    >
+                      <span class="material-symbols-outlined text-[14px]"
+                        >schedule</span
+                      >
+                      Pending
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Mobile Card View -->
+          <div class="md:hidden space-y-2 p-lg">
+            <!-- Transaction 1 -->
+            <div
+              class="bg-surface-container p-3 rounded-lg border border-outline-variant"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center flex-shrink-0"
+                >
+                  <span class="material-symbols-outlined text-sm"
+                    >restaurant</span
+                  >
+                </div>
+                <div class="flex-1">
+                  <p class="font-bold text-on-surface text-sm">
+                    Joe's Italian Bistro
+                  </p>
+                  <p class="text-xs text-on-surface-variant">
+                    Card Payment • 4567
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex justify-between items-end pt-2 border-t border-outline-variant"
+              >
+                <div>
+                  <p class="text-xs text-on-surface-variant">Food</p>
+                  <p class="text-xs text-on-surface-variant">Oct 24, 2023</p>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-on-surface">-$124.50</p>
+                  <span
+                    class="text-secondary flex items-center justify-end gap-1 text-xs font-bold"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[14px]"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >check_circle</span
+                    >
+                    Completed
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- Transaction 2 -->
+            <div
+              class="bg-surface-container p-3 rounded-lg border border-outline-variant"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center flex-shrink-0"
+                >
+                  <span class="material-symbols-outlined text-sm">commute</span>
+                </div>
+                <div class="flex-1">
+                  <p class="font-bold text-on-surface text-sm">Uber Trip</p>
+                  <p class="text-xs text-on-surface-variant">Mobile Wallet</p>
+                </div>
+              </div>
+              <div
+                class="flex justify-between items-end pt-2 border-t border-outline-variant"
+              >
+                <div>
+                  <p class="text-xs text-on-surface-variant">Transport</p>
+                  <p class="text-xs text-on-surface-variant">Oct 23, 2023</p>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-on-surface">-$32.00</p>
+                  <span
+                    class="text-secondary flex items-center justify-end gap-1 text-xs font-bold"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[14px]"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >check_circle</span
+                    >
+                    Completed
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- Transaction 3 -->
+            <div
+              class="bg-surface-container p-3 rounded-lg border border-outline-variant"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center flex-shrink-0"
+                >
+                  <span class="material-symbols-outlined text-sm">house</span>
+                </div>
+                <div class="flex-1">
+                  <p class="font-bold text-on-surface text-sm">
+                    Skyline Properties
+                  </p>
+                  <p class="text-xs text-on-surface-variant">Bank Transfer</p>
+                </div>
+              </div>
+              <div
+                class="flex justify-between items-end pt-2 border-t border-outline-variant"
+              >
+                <div>
+                  <p class="text-xs text-on-surface-variant">Rent</p>
+                  <p class="text-xs text-on-surface-variant">Oct 22, 2023</p>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-on-surface">-$1,800.00</p>
+                  <span
+                    class="text-secondary flex items-center justify-end gap-1 text-xs font-bold"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[14px]"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >check_circle</span
+                    >
+                    Completed
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav
+      class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-4 bg-surface-container-highest dark:bg-inverse-surface shadow-[0_-1px_3px_0_rgba(0,0,0,0.1)] z-50"
+    >
+      <a
+        class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-95 transition-all"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined"
+          data-icon="dashboard"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >dashboard</span
+        >
+        <span class="font-label-md text-label-md">Home</span>
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high transition-all"
+        href="{%url 'allExpense' %}"
+      >
+        <span class="material-symbols-outlined" data-icon="payments"
+          >payments</span
+        >
+        <span class="font-label-md text-label-md">Expenses</span>
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high transition-all"
+        href="{% url 'logout' %}"
+      >
+        <span class="material-symbols-outlined" data-icon="analytics"
+          >analytics</span
+        >
+        <span class="font-label-md text-label-md">Logout</span>
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high transition-all"
+        href="#"
+      >
+        <span class="material-symbols-outlined" data-icon="settings"
+          >settings</span
+        >
+        <span class="font-label-md text-label-md">Settings</span>
+      </a>
+    </nav>
+
+    <!-- Budget Modal Popup -->
+    <div
+      id="budgetModal"
+      class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+      onclick="closeBudgetModal(event)"
+    >
+      <div
+        class="bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant w-full max-w-md"
+        onclick="event.stopPropagation()"
+      >
+        <form method="POST" action="{% url 'save_budget' %}">
+          {% csrf_token %}
+
+          <!-- Modal Header -->
+          <div
+            class="flex items-center justify-between p-lg border-b border-outline-variant"
+          >
+            <h3 class="font-headline-sm text-headline-sm text-on-surface">
+              Set Your Budget
+            </h3>
+            <button
+              type="button"
+              onclick="closeBudgetModal()"
+              class="text-on-surface-variant hover:text-on-surface transition-colors"
+            >
+              <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+          </div>
+
+          <!-- Modal Body -->
+          <div class="p-lg space-y-4">
+            <!-- Monthly Income Input -->
+            <div>
+              <label
+                class="block font-label-md text-label-md text-on-surface-variant mb-2"
+                for="monthlyIncome"
+              >
+                Monthly Income
+              </label>
+              <input
+                type="number"
+                id="monthlyIncome"
+                name="monthly_income"
+                placeholder="Enter your monthly income"
+                class="w-full px-4 py-3 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all text-body-md"
+                step="0.01"
+                min="0"
+                required
+              />
+            </div>
+
+            <!-- Total Balance to Spend Input -->
+            <div>
+              <label
+                class="block font-label-md text-label-md text-on-surface-variant mb-2"
+                for="totalBalance"
+              >
+                Total Balance to Spend
+              </label>
+              <input
+                type="number"
+                id="totalBalance"
+                name="total_balance"
+                placeholder="Enter total balance to spend"
+                class="w-full px-4 py-3 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all text-body-md"
+                step="0.01"
+                min="0"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Modal Footer -->
+          <div
+            class="flex flex-col md:flex-row gap-2 md:gap-3 p-lg border-t border-outline-variant"
+          >
+            <button
+              type="button"
+              onclick="closeBudgetModal()"
+              class="w-full md:flex-1 px-6 py-3 rounded-lg border border-outline-variant text-on-surface font-label-md hover:bg-surface-container-high transition-colors active:scale-95"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              class="w-full md:flex-1 px-6 py-3 rounded-lg bg-primary text-on-primary font-label-md shadow-md hover:opacity-90 active:scale-95 transition-all"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Micro-interactions and data animations could go here
+      document.querySelectorAll("button, a").forEach((el) => {
+        el.addEventListener("mousedown", () => {
+          el.classList.add("scale-95");
+        });
+        el.addEventListener("mouseup", () => {
+          el.classList.remove("scale-95");
+        });
+        el.addEventListener("mouseleave", () => {
+          el.classList.remove("scale-95");
+        });
+      });
+    </script>
+
+    <script>
+      // Budget Modal Functions
+      function openBudgetModal() {
+        const modal = document.getElementById("budgetModal");
+        modal.classList.remove("hidden");
+      }
+
+      function closeBudgetModal(event) {
+        // If event is passed and target is not the modal background, don't close
+        if (event && event.target.id !== "budgetModal") {
+          return;
+        }
+        const modal = document.getElementById("budgetModal");
+        modal.classList.add("hidden");
+      }
+
+      // function saveBudget() {
+      //   const monthlyIncome = document.getElementById('monthlyIncome').value;
+      //   const totalBalance = document.getElementById('totalBalance').value;
+
+      //   // Validate inputs
+      //   if (!monthlyIncome || !totalBalance) {
+      //     alert('Please fill in all fields');
+      //     return;
+      //   }
+
+      //   if (parseFloat(monthlyIncome) < 0 || parseFloat(totalBalance) < 0) {
+      //     alert('Please enter positive values');
+      //     return;
+      //   }
+
+      //   // Success message
+      //   alert(`Budget saved successfully!\nMonthly Income: ₹${parseFloat(monthlyIncome).toFixed(2)}\nTotal Balance to Spend: ₹${parseFloat(totalBalance).toFixed(2)}`);
+
+      //   // Close the modal
+      //   closeBudgetModal();
+
+      //   // Clear inputs
+      //   document.getElementById('monthlyIncome').value = '';
+      //   document.getElementById('totalBalance').value = '';
+      // }
+
+      // Close modal on Escape key press
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeBudgetModal();
+        }
+      });
+    </script>
+
+    <script>
+      document
+        .getElementById("image-input")
+        .addEventListener("change", function () {
+          if (this.files.length > 0) {
+            document.getElementById("profile-form").submit();
+          }
+        });
+    </script>
+  </body>
+</html>

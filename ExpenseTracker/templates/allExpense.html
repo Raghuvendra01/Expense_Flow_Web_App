@@ -1,0 +1,415 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Expenses - ExpenseFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#191c1d",
+                    "primary": "#3525cd",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#e7e8e9",
+                    "background": "#f8f9fa",
+                    "on-secondary-fixed": "#002113",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-surface": "#2e3132",
+                    "inverse-primary": "#c3c0ff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed-variant": "#92002a",
+                    "surface-variant": "#e1e3e4",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#dad7ff",
+                    "surface-container": "#edeeef",
+                    "tertiary": "#95002b",
+                    "surface": "#f8f9fa",
+                    "outline-variant": "#c7c4d8",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#4d44e3",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#006c49",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#464555",
+                    "tertiary-container": "#bf0f3c",
+                    "outline": "#777587",
+                    "on-secondary-fixed-variant": "#005236",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-primary-fixed": "#0f0069",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#191c1d",
+                    "tertiary-fixed-dim": "#ffb2b7",
+                    "on-tertiary-fixed": "#40000d",
+                    "surface-dim": "#d9dadb",
+                    "tertiary-fixed": "#ffdadb",
+                    "secondary-container": "#6cf8bb",
+                    "on-tertiary-container": "#ffd0d2",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-secondary-container": "#00714d",
+                    "primary-container": "#4f46e5",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "primary-fixed": "#e2dfff",
+                    "surface-container-low": "#f3f4f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "margin-desktop": "40px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "gutter": "20px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "numeric-display": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "numeric-display": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #191c1d;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c7c4d8;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- SideNavBar (Desktop) -->
+<aside class="h-screen w-64 hidden md:flex flex-col fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant p-lg z-50">
+<div class="mb-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">ExpenseFlow</h1>
+<p class="font-body-md text-on-surface-variant opacity-70">Personal Finance</p>
+</div>
+<nav class="flex flex-col gap-sm flex-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group" href="{% url 'dashboard' %}">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-body-md">Expenses</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group" href="/dashboard/logout/">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md">Logout</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="pt-lg border-t border-outline-variant flex items-center gap-3">
+{% if profile and profile.image %}
+            <img
+              src="{{ profile.image.url }}"
+              alt="Profile"
+              class="w-10 h-10 rounded-full object-cover"
+            />
+            {% else %}
+            <img
+              src="{% static 'images/default-profile.png' %}"
+              alt="Default Profile"
+              class="w-10 h-10 rounded-full"
+            />
+            {% endif %}
+            <div class="overflow-hidden">
+<p class="font-label-md text-on-surface truncate">{{full_name}}</p>
+<p class="text-xs text-on-surface-variant truncate">Account</p>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="md:ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop bg-surface dark:bg-surface-dim shadow-sm sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary md:hidden">ExpenseFlow</h1>
+<div class="hidden md:flex items-center bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant w-96">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-on-surface-variant/50" placeholder="Search transactions..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors active:opacity-80">
+{% if profile and profile.image %}
+            <img
+              src="{{ profile.image.url }}"
+              alt="Profile"
+              class="w-10 h-10 rounded-full object-cover"
+            />
+            {% else %}
+            <img
+              src="{% static 'images/default-profile.png' %}"
+              alt="Default Profile"
+              class="w-10 h-10 rounded-full"
+            />
+            {% endif %}
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<section class="p-margin-mobile md:p-margin-desktop flex flex-col gap-lg flex-1 overflow-y-auto custom-scrollbar pb-32 md:pb-margin-desktop">
+<!-- Page Header & Filters -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-3 md:gap-md">
+  <div>
+    <h2 class="font-headline-lg text-headline-lg text-on-surface">Expenses</h2>
+    <p class="font-body-md text-on-surface-variant text-sm md:text-base">Review and manage your financial transactions</p>
+  </div>
+
+
+
+
+
+<div class="flex flex-col md:flex-row items-center gap-2 md:gap-sm w-full">
+  <a href="{% url 'addExpense' %}" class="w-full md:w-auto shrink-0 px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-md active:scale-95">
+    <span class="material-symbols-outlined text-sm">add</span>
+    <span>Add Expense</span>
+  </a>
+
+  <form method="GET" class="w-full md:w-auto">
+    <select name="category" onchange="this.form.submit()" class="w-full px-4 py-2 bg-surface-container-high text-on-surface rounded-lg font-label-md hover:bg-outline-variant/30 transition-all">
+      <option value="">All Categories</option>
+      {% for category in categories %}
+        <option value="{{ category }}" {% if selected_category == category %}selected{% endif %}>
+          {{ category|title }}
+        </option>
+      {% endfor %}
+    </select>
+  </form>
+
+  
+</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Transaction Table Container -->
+<div class="hidden md:block bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<div class="overflow-x-auto">
+
+<table class="min-w-[700px] w-full text-left border-collapse hidden md:table">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-3 md:px-6 py-4 font-label-md text-on-surface-variant uppercase tracking-wider">Date</th>
+<th class="px-3 md:px-6 py-4 font-label-md text-on-surface-variant uppercase tracking-wider">Category</th>
+<th class="px-3 md:px-6 py-4 font-label-md text-on-surface-variant uppercase tracking-wider">Note</th>
+<th class="px-3 md:px-6 py-4 font-label-md text-on-surface-variant uppercase tracking-wider text-right">Amount</th>
+<th class="px-3 md:px-6 py-4 font-label-md text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+
+
+<tbody class="divide-y divide-outline-variant">
+
+{% for expense in expenses %}
+
+<tr class="hover:bg-surface-container transition-colors group">
+
+    <td class="px-3 md:px-6 py-4 text-on-surface whitespace-nowrap">
+        {{ expense.date }}
+    </td>
+
+    <td class="px-3 md:px-6 py-4 whitespace-nowrap">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+            {{ expense.category }}
+        </span>
+    </td>
+
+    <td class="px-3 md:px-6 py-4 text-on-surface-variant">
+        {{ expense.note }}
+    </td>
+
+    <td class="px-3 md:px-6 py-4 text-right font-numeric-display text-lg text-error">
+        ₹{{ expense.amount }}
+    </td>
+
+    <td class="px-3 md:px-6 py-4 text-right whitespace-nowrap">
+
+        <!-- <a class="p-1 text-on-surface-variant hover:text-primary" href="#">
+            <span class="material-symbols-outlined">edit</span>
+        </a> -->
+      <form method="POST" action="{% url 'delete_expense' expense.id %}">
+            {%csrf_token%}
+        <button class="p-1 text-on-surface-variant hover:text-error ml-2" type="submit">
+            <span class="material-symbols-outlined">delete</span>
+        <button>
+      </form>
+
+    </td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+    <td colspan="5" class="text-center py-6">
+        No expenses found
+    </td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+
+
+
+
+
+
+</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Pagination -->
+<div class="hidden md:flex px-6 py-4 bg-surface-container-low border-t border-outline-variant items-center justify-between">
+<p class="text-sm text-on-surface-variant">Showing 1 to 5 of 24 transactions</p>
+<div class="flex items-center gap-2">
+<button class="p-2 border border-outline-variant rounded hover:bg-surface transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-3 py-1 bg-primary text-on-primary rounded font-label-md">1</button>
+<button class="px-3 py-1 border border-outline-variant rounded font-label-md hover:bg-surface transition-colors">2</button>
+<button class="px-3 py-1 border border-outline-variant rounded font-label-md hover:bg-surface transition-colors">3</button>
+<button class="p-2 border border-outline-variant rounded hover:bg-surface transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+
+<!-- Mobile Card View (Visible Only on Mobile) -->
+<div class="md:hidden space-y-3">
+  {% for expense in expenses %}
+    <div class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant">
+      <div class="flex justify-between items-start mb-3">
+        <div class="flex-1">
+          <p class="text-xs text-on-surface-variant font-label-md">{{ expense.date }}</p>
+          <p class="font-body-md text-on-surface mt-2 break-words">{{ expense.note }}</p>
+        </div>
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary ml-2 shrink-0">
+          {{ expense.category }}
+        </span>
+      </div>
+      <div class="flex justify-between items-center pt-3 border-t border-outline-variant">
+        <span class="font-numeric-display text-lg text-error">₹{{ expense.amount }}</span>
+        <div class="flex gap-2">
+          <!-- <button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">edit</span>
+          </button> -->
+          <form method="POST" action="{% url 'delete_expense' expense.id %}">
+            {%csrf_token%}
+          <button class="p-2 text-on-surface-variant hover:text-error transition-colors" type="submit">
+            <span class="material-symbols-outlined">delete</span>
+          </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="text-center py-8 text-on-surface-variant">No expenses found</div>
+  {% endfor %}
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-4 bg-surface-container-highest dark:bg-inverse-surface shadow-[0_-1px_3px_0_rgba(0,0,0,0.1)] md:hidden z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-all" href="{%url 'dashboard' %}">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-label-md">Expenses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-all" href="/dashboard/logout/">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md">Logout</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interactions for the table rows
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('click', (e) => {
+                // Prevent click if button was clicked
+                if (e.target.closest('button')) return;
+                
+                row.classList.add('scale-[0.99]');
+                setTimeout(() => row.classList.remove('scale-[0.99]'), 100);
+            });
+        });
+    </script>
+</body></html>
